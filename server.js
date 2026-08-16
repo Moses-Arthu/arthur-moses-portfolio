@@ -67,12 +67,12 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    // 2. Nodemailer SMTP Setup
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = process.env.SMTP_PORT || 587;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-    const recipientEmail = process.env.RECIPIENT_EMAIL || 'mosesarthur799@gmail.com';
+    // 2. Nodemailer SMTP Setup (Supports both SMTP_* and EMAIL_* Vercel naming conventions)
+    const smtpHost = process.env.SMTP_HOST || process.env.EMAIL_HOST;
+    const smtpPort = process.env.SMTP_PORT || process.env.EMAIL_PORT || 587;
+    const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER;
+    const smtpPass = process.env.SMTP_PASS || process.env.EMAIL_PASS;
+    const recipientEmail = process.env.RECIPIENT_EMAIL || process.env.EMAIL_FROM || process.env.EMAIL_USER || 'mosesarthur799@gmail.com';
 
     // HTML Email Template
     const htmlContent = `
@@ -199,10 +199,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start Server
+// Start Server & Export for Vercel
 app.listen(PORT, () => {
   console.log(`\n==================================================`);
   console.log(`🚀 Arthur Moses Portfolio Server running on port ${PORT}`);
   console.log(`🌐 Local URL: http://localhost:${PORT}`);
   console.log(`==================================================\n`);
 });
+
+module.exports = app;
