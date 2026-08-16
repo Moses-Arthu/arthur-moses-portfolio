@@ -68,11 +68,23 @@ app.post('/api/contact', async (req, res) => {
     }
 
     // 2. Nodemailer SMTP Setup (Supports both SMTP_* and EMAIL_* Vercel naming conventions)
-    const smtpHost = process.env.SMTP_HOST || process.env.EMAIL_HOST;
-    const smtpPort = process.env.SMTP_PORT || process.env.EMAIL_PORT || 587;
-    const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER;
-    const smtpPass = process.env.SMTP_PASS || process.env.EMAIL_PASS;
-    const recipientEmail = process.env.RECIPIENT_EMAIL || process.env.EMAIL_FROM || process.env.EMAIL_USER || 'mosesarthur799@gmail.com';
+    const rawHost = process.env.SMTP_HOST || process.env.EMAIL_HOST || '';
+    const rawPort = process.env.SMTP_PORT || process.env.EMAIL_PORT || 587;
+    const rawUser = process.env.SMTP_USER || process.env.EMAIL_USER || '';
+    const rawPass = process.env.SMTP_PASS || process.env.EMAIL_PASS || '';
+    const rawRecipient = process.env.RECIPIENT_EMAIL || process.env.EMAIL_FROM || process.env.EMAIL_USER || 'mosesarthur799@gmail.com';
+
+    const smtpHost = rawHost.trim();
+    const smtpPort = Number(String(rawPort).trim()) || 587;
+    const smtpUser = rawUser.trim();
+    const smtpPass = rawPass.trim();
+    
+    // Extract clean email address if format is "Name <email@domain.com>"
+    let recipientEmail = rawRecipient.trim();
+    if (recipientEmail.includes('<') && recipientEmail.includes('>')) {
+      const match = recipientEmail.match(/<([^>]+)>/);
+      if (match && match[1]) recipientEmail = match[1].trim();
+    }
 
     // HTML Email Template
     const htmlContent = `
