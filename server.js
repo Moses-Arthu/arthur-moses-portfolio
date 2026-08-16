@@ -72,12 +72,13 @@ app.post('/api/contact', async (req, res) => {
     const rawPort = process.env.SMTP_PORT || process.env.EMAIL_PORT || 587;
     const rawUser = process.env.SMTP_USER || process.env.EMAIL_USER || '';
     const rawPass = process.env.SMTP_PASS || process.env.EMAIL_PASS || '';
-    const rawRecipient = process.env.RECIPIENT_EMAIL || process.env.EMAIL_FROM || process.env.EMAIL_USER || 'mosesarthur799@gmail.com';
+    const rawRecipient = process.env.RECIPIENT_EMAIL || process.env.EMAIL_TO || process.env.EMAIL_USER || 'mosesarthur799@gmail.com';
 
     const smtpHost = rawHost.trim();
     const smtpPort = Number(String(rawPort).trim()) || 587;
     const smtpUser = rawUser.trim();
-    const smtpPass = rawPass.trim();
+    // Strip spaces from Gmail App Password (e.g. 'eeka rnlb asxk sbgb' -> 'eekarnlbasxksbgb')
+    const smtpPass = rawPass.replace(/\s+/g, '').trim();
     
     // Extract clean email address if format is "Name <email@domain.com>"
     let recipientEmail = rawRecipient.trim();
@@ -156,10 +157,10 @@ app.post('/api/contact', async (req, res) => {
       const transporter = nodemailer.createTransport(transportConfig);
 
       const mailOptions = {
-        from: `"${name}" <${smtpUser}>`,
+        from: `"Portfolio Contact Form (${name})" <${smtpUser}>`,
         replyTo: email,
         to: recipientEmail,
-        subject: `[Portfolio Contact] ${subject}`,
+        subject: `[Portfolio Inquiry] ${subject}`,
         text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
         html: htmlContent
       };
