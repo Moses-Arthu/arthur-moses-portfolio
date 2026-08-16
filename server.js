@@ -171,7 +171,7 @@ app.post('/api/contact', async (req, res) => {
 
       return res.status(200).json({
         success: true,
-        message: 'Message sent successfully! (Logged to backend server console)'
+        message: 'Message sent successfully! I will get back to you soon.'
       });
     }
 
