@@ -117,15 +117,31 @@ app.post('/api/contact', async (req, res) => {
 
     // Check if live SMTP credentials exist
     if (smtpHost && smtpUser && smtpPass) {
-      const transporter = nodemailer.createTransport({
+      const isGmail = smtpHost.toLowerCase().includes('gmail');
+      
+      const transportConfig = isGmail ? {
+        service: 'gmail',
+        auth: {
+          user: smtpUser,
+          pass: smtpPass
+        },
+        tls: {
+          rejectUnauthorized: false
+        }
+      } : {
         host: smtpHost,
         port: Number(smtpPort),
         secure: Number(smtpPort) === 465,
         auth: {
           user: smtpUser,
           pass: smtpPass
+        },
+        tls: {
+          rejectUnauthorized: false
         }
-      });
+      };
+
+      const transporter = nodemailer.createTransport(transportConfig);
 
       const mailOptions = {
         from: `"${name}" <${smtpUser}>`,
@@ -137,7 +153,7 @@ app.post('/api/contact', async (req, res) => {
       };
 
       await transporter.sendMail(mailOptions);
-      console.log(`[NODEMAILER] Email successfully sent to ${recipientEmail} from ${email}`);
+      console.log(`[NODEMAILER SUCCESS] Email sent to ${recipientEmail} from ${email}`);
       
       return res.status(200).json({
         success: true,
@@ -161,9 +177,19 @@ app.post('/api/contact', async (req, res) => {
 
   } catch (error) {
     console.error('[NODEMAILER ERROR]', error);
+    
+    let userErrorMessage = 'Failed to send email. ';
+    if (error.code === 'EAUTH' || (error.response && error.response.includes('535'))) {
+      userErrorMessage += 'SMTP Authentication failed. If using Gmail, make sure to use a 16-character App Password instead of your regular password.';
+    } else if (error.code === 'ESOCKET' || error.code === 'ETIMEDOUT') {
+      userErrorMessage += 'SMTP connection timed out. Please check your SMTP host and port settings.';
+    } else {
+      userErrorMessage += error.message || 'Please verify your SMTP credentials.';
+    }
+
     return res.status(500).json({
       success: false,
-      error: 'An internal server error occurred while sending the email.'
+      error: userErrorMessage
     });
   }
 });
