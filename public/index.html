@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arthur Moses | Senior Backend Developer & System Architect</title>
+  <meta name="description" content="Portfolio of Arthur Moses, a Senior Backend Developer specializing in scalable server architecture, Node.js microservices, PostgreSQL, Redis, and high-throughput REST APIs.">
+  <meta name="keywords" content="Arthur Moses, Backend Developer, Node.js Developer, System Architect, Express, PostgreSQL, Redis, Microservices, REST API">
+  <meta name="author" content="Arthur Moses">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Arthur Moses | Senior Backend Developer">
+  <meta property="og:description" content="Mobile-First Neumorphic Portfolio of Arthur Moses. Expertise in high-performance API design, microservices, and server architecture.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="header" id="header">
+    <div class="container header-container">
+      <!-- Logo Badge -->
+      <a href="#home" class="logo-badge" aria-label="Arthur Moses Home">AM</a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link nav-cta">HIRE ME</a>
+      </nav>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE SLIDE-OUT DRAWER -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="logo-badge">AM</div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    
+    <nav class="drawer-links">
+      <a href="#home" class="drawer-link">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Home
+      </a>
+      <a href="#about" class="drawer-link">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        About
+      </a>
+      <a href="#skills" class="drawer-link">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+        Skills
+      </a>
+      <a href="#projects" class="drawer-link">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        Projects
+      </a>
+      <a href="#contact" class="drawer-link">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Contact
+      </a>
+    </nav>
+
+    <div class="drawer-footer">
+      <a href="#contact" class="btn-amber" style="width: 100%; text-align: center;">HIRE ME NOW</a>
+      <div class="social-icons-row" style="margin-top: 1.5rem;">
+        <a href="https://github.com" target="_blank" rel="noopener" class="btn-icon-neu" aria-label="GitHub">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn-icon-neu" aria-label="LinkedIn">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="mailto:arthur.moses.dev@gmail.com" class="btn-icon-neu" aria-label="Email">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text-content">
+            <span class="section-label">HELLO</span>
+            <h1 class="hero-headline">
+              i'm <span class="name-highlight">Arthur Moses</span>
+            </h1>
+            <h2 class="hero-subtitle">Computer Science & Engineering @ UMaT | Backend Developer</h2>
+            <p class="hero-description">
+              I am a Computer Science and Engineering student at the University of Mines and Technology (UMaT) with a deep passion for backend development. I focus on constructing robust server-side architectures, clean API designs, and scalable database systems.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn-amber">
+                HIRE ME
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="docs/Moses_Arthur_CV.pdf" target="_blank" download="Moses_Arthur_CV.pdf" class="btn-purple">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                DOWNLOAD CV
+              </a>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="hero-quick-stats">
+              <div class="stat-item">
+                <span class="stat-number">UMaT</span>
+                <span class="stat-label">CS & Engineering '26</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">Best Innovation</span>
+                <span class="stat-label">Build with Gemma 4 @ TTU</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Production Platforms</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Image & Asymmetrical Amber Backdrop Graphic -->
+          <div class="hero-image-wrapper">
+            <div class="amber-backdrop-card"></div>
+            <div class="profile-neumorphic-frame">
+              <div class="profile-image-container">
+                <img src="images/arthur_avatar.png" alt="Arthur Moses - Backend Developer Profile Picture" width="400" height="440" loading="eager">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="neu-card about-card">
+          <span class="section-label">ABOUT ME</span>
+          <h2 class="section-title">Architecting Resilient <span>Backend Infrastructure</span></h2>
+
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                I am a Computer Science and Engineering student at the <strong>University of Mines and Technology (UMaT)</strong> with a deep passion for backend development. I focus on constructing robust server-side architectures, clean API designs, and scalable database systems.
+              </p>
+              <p>
+                Rather than sticking purely to theory, I actively bring logic to life through real-world applications—such as building <strong>Watchdog</strong> (an API health-checking service), a <strong>Video Verification System</strong>, and data-driven platforms like <strong>Resilient Ghana</strong>.
+              </p>
+
+              <div class="about-highlights">
+                <div class="highlight-box">
+                  <h4>API Engineering</h4>
+                  <p>RESTful standards, Watchdog pulse watchdog APIs & Swagger docs.</p>
+                </div>
+                <div class="highlight-box">
+                  <h4>Database & Architecture</h4>
+                  <p>Relational PostgreSQL, MongoDB Atlas & performance optimization.</p>
+                </div>
+                <div class="highlight-box">
+                  <h4>Computer Vision & Media</h4>
+                  <p>OpenCV, MediaPipe face mesh & Streamlit video verification systems.</p>
+                </div>
+                <div class="highlight-box">
+                  <h4>Real-Time Systems</h4>
+                  <p>BroadcastChannel multiplayer sync, proximity alarms & SOS telemetry.</p>
+                </div>
+              </div>
+
+              <!-- Honors, Awards & Certifications Box -->
+              <div style="margin-top: 2rem; padding: 1.5rem; border-radius: var(--radius-sm); box-shadow: var(--neu-pressed-sm); background-color: rgba(108, 92, 231, 0.05); border-left: 4px solid var(--primary-purple);">
+                <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--primary-purple); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                  🏆 Honors, Awards & Certification
+                </h4>
+                <ul style="list-style: none; padding-left: 0; color: var(--text-main); font-size: 0.925rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                  <li><strong>🥇 1st Place Winner:</strong> Build with AI Competition (Takoradi Technical University - TTU)</li>
+                  <li><strong>🥇 Best Innovation Project Award:</strong> Resilient Ghana won at Build with Gemma 4 Competition (Takoradi Technical University - TTU)</li>
+                  <li><strong>🥈 2nd Place Winner:</strong> SentryLink, UMaT Innovation & Career Fair 2026</li>
+                  <li>
+                    <strong>📜 Web Development Certified:</strong> CODTECH IT Solutions (ID: COD6WD0492)
+                    &nbsp;•&nbsp;
+                    <a href="docs/Arthur_Moses_Certificate.pdf" target="_blank" style="color: var(--primary-purple); font-weight: 700; text-decoration: underline;">View Certificate PDF</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Social & Document Download Panel -->
+            <div class="social-links-panel">
+              <span class="social-panel-title">CONNECT & CREDENTIALS</span>
+              <div class="social-buttons-grid">
+                <a href="https://www.linkedin.com/in/moses-arthur-78a009285" target="_blank" rel="noopener" class="btn-icon-neu" title="LinkedIn Profile" aria-label="LinkedIn">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://github.com/Moses-Arthu" target="_blank" rel="noopener" class="btn-icon-neu" title="GitHub Profile" aria-label="GitHub">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:mosesarthur799@gmail.com" class="btn-icon-neu" title="Email Moses Arthur" aria-label="Email">
+                  <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </a>
+                <a href="docs/Arthur_Moses_Certificate.pdf" target="_blank" class="btn-icon-neu" title="View Official Training Certificate" aria-label="Certificate">
+                  <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                </a>
+              </div>
+              <a href="docs/Moses_Arthur_CV.pdf" target="_blank" download="Moses_Arthur_CV.pdf" class="btn-amber" style="margin-top: 1rem; width: 100%;">
+                DOWNLOAD CV
+              </a>
+              <a href="docs/Arthur_Moses_Certificate.pdf" target="_blank" class="btn-purple" style="width: 100%; justify-content: center;">
+                VIEW CERTIFICATE
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+          <span class="section-label">SKILLS</span>
+          <h2 class="section-title">Backend Tech <span>Stack & Tools</span></h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- 1. Node.js -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="#68A063"><path d="M12 1.5l-10 5.77v11.54l10 5.77 10-5.77v-11.54l-10-5.77zm7.5 16.03l-7.5 4.33-7.5-4.33v-8.66l7.5-4.33 7.5 4.33v8.66z"/><path d="M12 7.25l-4.5 2.6v5.2l4.5 2.6 4.5-2.6v-5.2l-4.5-2.6z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Node.js</h3>
+              <p>Asynchronous Engine, Event Loop & Streams</p>
+            </div>
+          </div>
+
+          <!-- 2. Express -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2D3748" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Express.js</h3>
+              <p>REST Routing, Middleware & Security Filters</p>
+            </div>
+          </div>
+
+          <!-- 3. Django -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="#092E20"><path d="M11.146 0h3.137v18.736c-1.455.348-2.866.522-4.234.522-4.185 0-6.048-1.84-6.048-5.521 0-3.606 2.064-5.595 5.8-5.595.497 0 .944.025 1.345.075V0zm0 10.744a4.137 4.137 0 00-1.12-.149c-1.89 0-2.76.995-2.76 2.86 0 1.915.846 2.91 2.76 2.91.373 0 .746-.05 1.12-.149v-5.472zM16.14 4.887h3.137v14.15h-3.137V4.887zM17.71 0a1.765 1.765 0 110 3.53 1.765 1.765 0 010-3.53z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Django</h3>
+              <p>Python ORM, Admin Engine & Security</p>
+            </div>
+          </div>
+
+          <!-- 4. PostgreSQL -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="#336791"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5.5z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>PostgreSQL</h3>
+              <p>Relational Schemas, Indexing & ACID</p>
+            </div>
+          </div>
+
+          <!-- 5. MongoDB -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="#47A248"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-15v6.586l-2.293-2.293-1.414 1.414L12 17.414l4.707-4.707-1.414-1.414L13 13.586V7h-2z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>MongoDB</h3>
+              <p>NoSQL Document Stores & Aggregation</p>
+            </div>
+          </div>
+
+          <!-- 6. Redis -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="#DC382D"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9L2 6v11l10 5 10-5V6l-10 5z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Redis</h3>
+              <p>In-Memory Caching & Pub/Sub Queues</p>
+            </div>
+          </div>
+
+          <!-- 7. Docker -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="#2496ED"><path d="M13.983 11.078h2.119v2.119h-2.119zm-3.177 0h2.118v2.119h-2.118zm-3.178 0h2.119v2.119H7.628zm-3.178 0h2.119v2.119H4.45zm9.533-3.177h2.119v2.118h-2.119zm-3.177 0h2.118v2.118h-2.118zm-3.178 0h2.119v2.118H7.628zm6.355-3.178h2.119v2.119h-2.119zM1 14.568c.553 4.29 4.316 7.632 8.795 7.632 5.074 0 9.2-4.126 9.2-9.2 0-.256-.013-.51-.035-.761C20.61 11.08 22.04 9.68 23 8c-.89.47-1.84.8-2.85.93.98-.6 1.73-1.57 2.08-2.72-.94.57-1.99.98-3.11 1.2-1.96-2.12-5.18-2.24-7.3-.28-1.42 1.3-2.02 3.29-1.58 5.17-3.95-.2-7.5-2.09-9.87-5.01-1.3 2.24-.65 5.12 1.5 6.42-.77-.02-1.51-.24-2.16-.6-.02 2.37 1.64 4.41 3.96 4.89-.73.2-1.5.24-2.25.09.62 1.95 2.41 3.32 4.48 3.36-1.78 1.4-4 2.16-6.3 2.16H1z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Docker</h3>
+              <p>Containerization, Volumes & Networks</p>
+            </div>
+          </div>
+
+          <!-- 8. REST APIs -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#6C5CE7" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>REST APIs</h3>
+              <p>OpenAPI, JSON Schema, JWT Auth</p>
+            </div>
+          </div>
+
+          <!-- 9. Git -->
+          <div class="neu-card skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="#F05032"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.44.516.515.655 1.259.428 1.909l2.659 2.66c.65-.228 1.394-.09 1.909.427.72.72.72 1.887 0 2.607-.72.72-1.888.72-2.607 0-.542-.542-.667-1.336-.37-1.992l-2.477-2.477V15.5c.215.112.414.26.58.427.72.72.72 1.887 0 2.607-.72.72-1.888.72-2.607 0-.72-.72-.72-1.887 0-2.607.195-.195.42-.34.664-.438V9.12c-.244-.098-.469-.243-.664-.438-.543-.543-.666-1.337-.37-1.993L5.706 3.93.454 9.182c-.604.604-.604 1.582 0 2.187l10.48 10.478c.604.604 1.582.604 2.187 0l10.425-10.424c.604-.604.604-1.582 0-2.187z"/></svg>
+            </div>
+            <div class="skill-info">
+              <h3>Git & GitHub</h3>
+              <p>Branching Workflows & Continuous Integration</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SHOWCASE SECTION -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+          <span class="section-label">MY PROJECTS</span>
+          <h2 class="section-title">Backend Architecture <span>Showcase</span></h2>
+        </div>
+
+        <div class="projects-stack">
+          <!-- Project 1: Tech for Resilient Communities -->
+          <article class="neu-card project-card">
+            <div class="project-visual">
+              <img src="images/project_resilient.png" alt="Tech for Resilient Communities Hazard Intelligence Dashboard" width="600" height="400" loading="lazy">
+            </div>
+            <div class="project-details">
+              <h3>Tech for Resilient Communities</h3>
+              <p class="project-description">
+                Comprehensive real-time hazard intelligence platform empowering Ghanaian communities, emergency responders, and national authorities to monitor, report, and respond to illegal mining (galamsey) and flood outbreaks. Features Haversine proximity alarms, BroadcastChannel multiplayer sync, SOS emergency panic beacons, ensemble AI flood nowcasting (Random Forest + XGBoost + LSTM), and Google Earth Engine satellite telemetry.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Leaflet</span>
+                <span class="tech-tag">BroadcastChannel</span>
+                <span class="tech-tag">Flood Nowcasting</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Moses-Arthu/Tech-for-Resilient-Communities1" target="_blank" rel="noopener" class="btn-purple">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  GitHub Repository
+                </a>
+                <a href="https://tech-for-resilient-communities1.vercel.app" target="_blank" rel="noopener" class="btn-amber" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">
+                  LIVE DEMO
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Deepfake Guardian 2026 -->
+          <article class="neu-card project-card reverse">
+            <div class="project-visual">
+              <img src="images/project_deepfake.png" alt="Deepfake Guardian AI Media Forensics Dashboard" width="600" height="400" loading="lazy">
+            </div>
+            <div class="project-details">
+              <h3>Deepfake Guardian 2026</h3>
+              <p class="project-description">
+                AI-powered dual-modal deepfake detection and media forensics platform built with Streamlit. Leverages MediaPipe facial landmark mesh tracking, audio spectral frequency anomaly extraction, calibrated machine learning classifiers, and automated PDF forensic report generation.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Streamlit</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">MediaPipe</span>
+                <span class="tech-tag">Scikit-learn</span>
+                <span class="tech-tag">Media Forensics</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Moses-Arthu/Deepfake-Guardian-2026" target="_blank" rel="noopener" class="btn-purple">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  GitHub Repository
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Pulse-Check API -->
+          <article class="neu-card project-card">
+            <div class="project-visual">
+              <img src="images/project_pulse_check.png" alt="Pulse-Check Dead Mans Switch Watchdog Telemetry" width="600" height="400" loading="lazy">
+            </div>
+            <div class="project-details">
+              <h3>Pulse-Check API (Watchdog Sentinel)</h3>
+              <p class="project-description">
+                Production-grade stateful Dead Man's Switch API for CritMon Servers Inc. Monitors remote solar farms and unmanned weather stations. Automatically tracks heartbeat countdown timers, executes maintenance pauses, dispatches Nodemailer alert notifications, and exposes an interactive Swagger OpenAPI interface.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">REST API</span>
+                <span class="tech-tag">Nodemailer</span>
+                <span class="tech-tag">Swagger / OpenAPI</span>
+                <span class="tech-tag">Winston</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Moses-Arthu/Pulse-Check-API" target="_blank" rel="noopener" class="btn-purple">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  GitHub Repository
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET IN TOUCH CONTACT FORM SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="neu-card contact-card">
+          <div style="text-align: center; margin-bottom: 3rem;">
+            <span class="section-label">GET IN TOUCH</span>
+            <h2 class="section-title">Let's Build Something <span>Exceptional</span></h2>
+            <p style="color: var(--text-muted); max-width: 580px; margin: 0 auto;">
+              Have a backend engineering role, custom microservices project, or system optimization inquiry? Send a direct message below.
+            </p>
+          </div>
+
+          <form id="contactForm" class="contact-form-grid" novalidate>
+            <!-- Employer / Recruiter Name -->
+            <div class="form-group">
+              <label for="name" class="form-label">Recruiter / Full Name *</label>
+              <input type="text" id="name" name="name" class="neu-input" placeholder="e.g. Sarah Jenkins" required>
+            </div>
+
+            <!-- Employer Email Address -->
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" id="email" name="email" class="neu-input" placeholder="e.g. sarah@company.com" required>
+            </div>
+
+            <!-- Subject / Company Name -->
+            <div class="form-group full-width">
+              <label for="subject" class="form-label">Subject / Company Name *</label>
+              <input type="text" id="subject" name="subject" class="neu-input" placeholder="e.g. Senior Backend Role at TechCorp" required>
+            </div>
+
+            <!-- Message / Details -->
+            <div class="form-group full-width">
+              <label for="message" class="form-label">Message / Project Details *</label>
+              <textarea id="message" name="message" class="neu-input" placeholder="Tell me about your team, tech stack, or project scope..." required></textarea>
+            </div>
+
+            <!-- Submit Button & Alerts -->
+            <div class="form-group full-width form-submit-wrap">
+              <button type="submit" id="submitBtn" class="btn-amber">
+                <span id="btnSpinner" class="spinner" style="display: none;"></span>
+                <span id="btnText">SEND MESSAGE</span>
+              </button>
+
+              <div id="statusAlert" class="form-status-alert"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="logo-badge" style="margin: 0 auto 1rem auto;">AM</div>
+      <p class="footer-text">
+        © 2026 Arthur Moses. All Rights Reserved. Built with Neumorphic Design & Node.js Backend.
+      </p>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top of page">
+    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- JS Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>
